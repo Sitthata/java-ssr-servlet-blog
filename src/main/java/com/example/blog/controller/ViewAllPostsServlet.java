@@ -2,6 +2,7 @@ package com.example.blog.controller;
 
 import com.example.blog.model.Post;
 import com.example.blog.model.PostDAO;
+import com.example.blog.utility.TimeAgoUtil;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ public class ViewAllPostsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
             List<Post> allPosts = PostDAO.getAllPosts();
+
 
             if (allPosts != null && !allPosts.isEmpty()) {
                 request.setAttribute("allPosts", allPosts);

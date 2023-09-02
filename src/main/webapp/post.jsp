@@ -1,4 +1,6 @@
-<%@ page import="com.example.blog.model.Post" %><%--
+<%@ page import="com.example.blog.model.Post" %>
+<%@ page import="java.sql.Time" %>
+<%@ page import="com.example.blog.utility.TimeAgoUtil" %><%--
   Created by IntelliJ IDEA.
   User: ADMIN
   Date: 9/2/2023
@@ -20,7 +22,7 @@
 <!-- Display the post details -->
 <h2><%= post.getTitle() %></h2>
 <p>By: <%= post.getAuthor() %></p>
-<p>Created At: <%= post.getCreateAt() %></p>
+<p>Created At: <%= TimeAgoUtil.getTimeAgo(post.getCreateAt()) %></p>
 <div>
     <%= post.getContent() %>
 </div>

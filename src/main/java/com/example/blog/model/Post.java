@@ -1,5 +1,7 @@
 package com.example.blog.model;
 
+import com.example.blog.utility.TimeAgoUtil;
+
 import java.sql.Date;
 import java.time.LocalDateTime;
 

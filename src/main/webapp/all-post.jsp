@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.example.blog.model.Post" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.example.blog.utility.TimeAgoUtil" %>
 <html>
 <head>
     <title>All Blog Post</title>
@@ -22,7 +23,7 @@
     <div>
         <h2><a href="ViewPost?id=<%= post.getId() %>"><%= post.getTitle() %></a></h2>
         <p>By: <%= post.getAuthor() %></p>
-        <p>Created At: <%= post.getCreateAt() %></p>
+        <p>Created At: <%= TimeAgoUtil.getTimeAgo(post.getCreateAt()) %></p>
     </div>
     <%
             }
