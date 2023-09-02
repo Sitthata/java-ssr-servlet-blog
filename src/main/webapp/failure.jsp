@@ -12,7 +12,7 @@
 </head>
 <body>
     <h1>Something went wrong when added the POST</h1>
-    <a href="post.jsp">View Post</a>
+    <a href="ViewAllPosts">View Post</a>
     <a href="create-post.jsp">Create Post</a>
 </body>
 </html>

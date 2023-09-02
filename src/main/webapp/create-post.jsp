@@ -11,6 +11,9 @@
     <title>Add new Post</title>
 </head>
 <body>
+<nav>
+    <li><a href="ViewAllPosts">Back</a></li>
+</nav>
 <h1>Create a new Post</h1>
 <form action="CreatePost" method="POST">
     <div>

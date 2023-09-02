@@ -14,6 +14,9 @@
     <title>All Blog Post</title>
 </head>
 <body>
+    <nav>
+        <li><a href="create-post.jsp">Add New Post</a></li>
+    </nav>
     <h1>All Posts</h1>
     <%
         List<Post> allPosts = (List<Post>) request.getAttribute("allPosts");

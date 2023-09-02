@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class DatabaseUtil {
     private static final String DB_HOST = "jdbc:mysql://localhost:3306/blog";
     private static final String DB_NAME = "root";
-    private static final String DB_PASS = "";
+    private static final String DB_PASS = System.getenv("SQL_PASS");
     public static Connection getConnection() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

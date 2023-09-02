@@ -2,7 +2,6 @@ package com.example.blog.model;
 
 import com.example.blog.utility.DatabaseUtil;
 
-import javax.xml.crypto.Data;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ public class PostDAO {
             preparedStatement.setString(1, post.getTitle());
             preparedStatement.setString(2, post.getContent());
             preparedStatement.setString(3, post.getAuthor());
-            // Convert into .sqlTimestamp
+            // Convert into Timestamp
             Timestamp timestamp = Timestamp.valueOf(post.getCreateAt());
             preparedStatement.setTimestamp(4, timestamp);
 
@@ -38,7 +37,6 @@ public class PostDAO {
             String sql = "SELECT * FROM posts WHERE id = ?";
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, id);
-
             resultSet = preparedStatement.executeQuery();
 
             // Handle null data
@@ -51,7 +49,7 @@ public class PostDAO {
             post.setTitle(resultSet.getString("title"));
             post.setContent(resultSet.getString("content"));
             post.setAuthor(resultSet.getString("author"));
-
+            // Convert Data type
             Timestamp timestamp = resultSet.getTimestamp("createAt");
             LocalDateTime createAt = timestamp.toLocalDateTime();
             post.setCreateAt(createAt);
@@ -61,15 +59,13 @@ public class PostDAO {
             return null;
         } finally {
             try {
-                // Close resource
+                // Close the resources
                 if (resultSet != null) resultSet.close();
                 if (preparedStatement != null) preparedStatement.close();
                 if (connection != null) connection.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
-
         }
     }
 
@@ -91,7 +87,7 @@ public class PostDAO {
                 String content = resultSet.getString("content");
                 String author = resultSet.getString("author");
                 LocalDateTime createAt = resultSet.getTimestamp("createAt").toLocalDateTime();
-
+                // Create an instance of Post
                 Post post = new Post();
                 post.setId(id);
                 post.setTitle(title);
@@ -105,7 +101,7 @@ public class PostDAO {
             e.printStackTrace();
             return null;
         } finally {
-            // Don't forget to close your resources
+            // Close the resources
             if (resultSet != null) try { resultSet.close(); } catch (SQLException ignore) {}
             if (preparedStatement != null) try { preparedStatement.close(); } catch (SQLException ignore) {}
             if (connection != null) try { connection.close(); } catch (SQLException ignore) {}
